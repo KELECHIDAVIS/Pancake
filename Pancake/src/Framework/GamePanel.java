@@ -19,8 +19,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, MouseLis
 	// the while loop will be in the run method 
 	
 	private Thread gameThread ; 
-	private int UPS = 0; 
-	private Audio clapSound; // a test sound
+	//private int UPS = 0;     for fps counter
+	//private Audio clapSound; // a test sound 
 	public GamePanel()
 	{
 		this.addKeyListener(this); 
@@ -72,7 +72,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, MouseLis
 			{
 				repaint(); 
 				timer+=1000; 
-				this.UPS = updates;  // Updates per seconds
+				 // Updates per seconds
 				frames=0; 
 				updates=0; 
 				
@@ -92,9 +92,12 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, MouseLis
 	public void paint(Graphics g ) // this is the function where you render your shapes and images
 	{
 		super.paint(g);
+		/*
+		 * this is for fps counter
+		
 		g.setFont(new Font("Sans Seriff", Font.BOLD, 15));
 		g.setColor(Color.gray);
-		g.drawString("FPS: "+UPS, 0,14);
+		g.drawString("FPS: "+UPS, 0,14);*/ 
 		 
 	}
 
