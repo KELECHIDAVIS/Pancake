@@ -33,8 +33,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, MouseLis
 		
 		
 		
-		gameThread = new Thread(this); 
-		gameThread.start(); 
+		
 		
 	}
 	
