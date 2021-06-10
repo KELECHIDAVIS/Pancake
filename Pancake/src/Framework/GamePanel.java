@@ -12,15 +12,16 @@ import javax.swing.JPanel;
 
 import Framework.audio.Audio;
 
-public class GamePanel extends JPanel implements Runnable, KeyListener, MouseListener
+public abstract class GamePanel extends JPanel implements Runnable, KeyListener, MouseListener
 {
 	//this is where you are going to draw and render all your objects and images
 	//this is also where the game loop will be
 	// the while loop will be in the run method 
 	
 	private Thread gameThread ; 
-	//private int UPS = 0;     for fps counter
-	//private Audio clapSound; // a test sound 
+	public double UPS = 60.0; 
+	
+	
 	public GamePanel()
 	{
 		this.addKeyListener(this); 
@@ -48,7 +49,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, MouseLis
 		long lastTime = System.nanoTime() ; 
 		long timer = System.currentTimeMillis(); 
 		
-		final double ns = 1000000000.0/ 60.0; 
+		final double ns = 1000000000.0/ UPS; 
 		double delta = 0; 
 		int frames=0;
 		int updates = 0; 
@@ -61,6 +62,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, MouseLis
 			while(delta>=1)
 			{
 				update(); 
+				repaint(); 
 				updates++; 
 				delta--; 
 			}
@@ -82,86 +84,40 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, MouseLis
 	
 	
 	
-	public void update() // function that handles game logic ;  gets called 60 times per second 
-	{
-		
-		
-	}
+	public abstract void update();
 	
-	public void paint(Graphics g ) // this is the function where you render your shapes and images
-	{
-		super.paint(g);
-		/*
-		 * this is for fps counter
-		
-		g.setFont(new Font("Sans Seriff", Font.BOLD, 15));
-		g.setColor(Color.gray);
-		g.drawString("FPS: "+UPS, 0,14);*/ 
-		 
-	}
+	public abstract void paint(Graphics g );
 
 
 
 	
 	//These three methods are the keylisteners use keypressed for movement 
 	@Override
-	public void keyTyped(KeyEvent e)
-	{
-		
-		
-	}
+	public abstract void keyTyped(KeyEvent e); 
 
 
 
 	@Override
-	public void keyPressed(KeyEvent e)
-	{
-		
-		
-	}
+	public abstract void keyPressed(KeyEvent e);
 
 
 
 	@Override
-	public void keyReleased(KeyEvent e)
-	{
-		
-		
-	}
+	public abstract void keyReleased(KeyEvent e);
 
 	@Override
-	public void mouseClicked(MouseEvent e)
-	{
-	
-		
-	}
+	public abstract void mouseClicked(MouseEvent e);
 
 	@Override
-	public void mousePressed(MouseEvent e)
-	{
-		
-		
-	}
+	public  abstract void mousePressed(MouseEvent e);
 
 	@Override
-	public void mouseReleased(MouseEvent e)
-	{
-		
-		
-	}
+	public  abstract void mouseReleased(MouseEvent e);
 
 	@Override
-	public void mouseEntered(MouseEvent e)
-	{
-		
-		
-	}
+	public  abstract void mouseEntered(MouseEvent e);
 
 	@Override
-	public void mouseExited(MouseEvent e)
-	{
-		
-		
-	}
+	public  abstract void mouseExited(MouseEvent e);
 
 }
