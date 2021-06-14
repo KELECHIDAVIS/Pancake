@@ -18,9 +18,9 @@ public abstract class GamePanel extends JPanel implements Runnable, KeyListener,
 	//this is also where the game loop will be
 	// the while loop will be in the run method 
 	
-	private Thread gameThread ; 
+	protected Thread gameThread = new Thread(this); 
 	public double UPS = 60.0; 
-	
+	protected int SCREENH, SCREENW; 
 	
 	public GamePanel()
 	{
@@ -36,6 +36,11 @@ public abstract class GamePanel extends JPanel implements Runnable, KeyListener,
 		
 		
 		
+	}
+	
+	public void start()
+	{
+		gameThread.start();
 	}
 	
 	public void initSounds() // initializes all the sounds 

@@ -2,6 +2,7 @@ package Framework;
 
 import java.awt.Dimension;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public abstract class GameFrame extends JFrame 
@@ -19,6 +20,8 @@ public abstract class GameFrame extends JFrame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // this is how it should be set up 
 		setSize(new Dimension(width, height)); 
 		setLocationRelativeTo(null);
+		ImageIcon image = new ImageIcon("PLV1.png"); 
+		this.setIconImage(image.getImage()); 
 		
 		//this.addKeyListener(new Key(panel));
 		
